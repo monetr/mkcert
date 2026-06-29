@@ -1,14 +1,14 @@
 module github.com/monetr/mkcert
 
-go 1.23.0
+go 1.25.0
 
 require (
-	golang.org/x/net v0.38.0
+	golang.org/x/net v0.56.0
 	howett.net/plist v1.0.1
 	software.sslmate.com/src/go-pkcs12 v0.7.2
 )
 
 require (
-	golang.org/x/crypto v0.36.0 // indirect
-	golang.org/x/text v0.23.0 // indirect
+	golang.org/x/crypto v0.53.0 // indirect
+	golang.org/x/text v0.38.0 // indirect
 )
