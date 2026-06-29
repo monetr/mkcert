@@ -33,26 +33,72 @@ mkcert automatically creates and installs a local CA in the system root store, a
 
 > **Warning**: the `rootCA-key.pem` file that mkcert automatically generates gives complete power to intercept secure requests from your machine. Do not share it.
 
-### macOS
+This fork is distributed as pre-built binaries attached to each [GitHub release](https://github.com/monetr/mkcert/releases). They are statically linked (CGO disabled), so there are no runtime dependencies, and each one is published alongside a `.sha256` checksum and a [Sigstore](https://www.sigstore.dev/) build-provenance attestation you can verify.
 
-On macOS, use [Homebrew](https://brew.sh/)
+Binaries are built for `linux-amd64`, `linux-arm64`, `linux-arm`, `darwin-amd64`, `darwin-arm64`, `windows-amd64`, and `windows-arm64`. Each asset is named `mkcert-<version>-<os>-<arch>`.
 
-```
-brew install mkcert
-brew install nss # if you use Firefox
-```
+### macOS and Linux
 
-or [MacPorts](https://www.macports.org/).
+With the [GitHub CLI](https://cli.github.com) you can grab the newest release for your platform in one step:
 
 ```
-sudo port selfupdate
-sudo port install mkcert
-sudo port install nss # if you use Firefox
+PLATFORM="linux-amd64" # or linux-arm64, linux-arm, darwin-amd64, darwin-arm64
+gh release download --repo monetr/mkcert --pattern "mkcert-*-${PLATFORM}"
+chmod +x mkcert-*-"${PLATFORM}"
+sudo mv mkcert-*-"${PLATFORM}" /usr/local/bin/mkcert
 ```
 
-### Linux
+Without it, download straight from the [latest release](https://github.com/monetr/mkcert/releases/latest) (fill in the version shown there):
 
-On Linux, first install `certutil`.
+```
+VERSION="v1.4.5" # the latest tag from the releases page
+PLATFORM="linux-amd64"
+curl -fsSL -o mkcert \
+  "https://github.com/monetr/mkcert/releases/download/${VERSION}/mkcert-${VERSION}-${PLATFORM}"
+chmod +x mkcert
+sudo mv mkcert /usr/local/bin/mkcert
+```
+
+### Windows
+
+Download `mkcert-<version>-windows-amd64.exe` (or `windows-arm64`) from the [latest release](https://github.com/monetr/mkcert/releases/latest), or use the [GitHub CLI](https://cli.github.com):
+
+```
+gh release download --repo monetr/mkcert --pattern "mkcert-*-windows-amd64.exe"
+```
+
+Rename it to `mkcert.exe` and put it somewhere on your `PATH`. If you're running into permission problems try running `mkcert` as an Administrator.
+
+### Verifying a download
+
+Every release binary ships with a matching `.sha256` checksum and a build-provenance attestation, so you can confirm a download is intact and was actually built by this repo's release workflow:
+
+```
+# Checksum: download the .sha256 asset next to the binary, then
+sha256sum -c mkcert-v1.4.5-linux-amd64.sha256
+
+# Provenance, using the GitHub CLI:
+gh attestation verify mkcert-v1.4.5-linux-amd64 --repo monetr/mkcert
+```
+
+### Build from source
+
+Building from source requires Go 1.18+.
+
+```
+git clone https://github.com/monetr/mkcert && cd mkcert
+make build
+```
+
+`make build` produces an unversioned `./mkcert`. To stamp the version the way the release workflow does:
+
+```
+go build -ldflags "-X main.Version=$(git describe --tags)"
+```
+
+### Firefox support on Linux
+
+mkcert installs the local CA into the Firefox (and Chromium) NSS trust store using `certutil`. If you use Firefox on Linux, install it first:
 
 ```
 sudo apt install libnss3-tools
@@ -63,52 +109,6 @@ sudo pacman -S nss
     -or-
 sudo zypper install mozilla-nss-tools
 ```
-
-Then you can install using [Homebrew on Linux](https://docs.brew.sh/Homebrew-on-Linux)
-
-```
-brew install mkcert
-```
-
-or build from source (requires Go 1.13+)
-
-```
-git clone https://github.com/FiloSottile/mkcert && cd mkcert
-go build -ldflags "-X main.Version=$(git describe --tags)"
-```
-
-or use [the pre-built binaries](https://github.com/FiloSottile/mkcert/releases).
-
-```
-curl -JLO "https://dl.filippo.io/mkcert/latest?for=linux/amd64"
-chmod +x mkcert-v*-linux-amd64
-sudo cp mkcert-v*-linux-amd64 /usr/local/bin/mkcert
-```
-
-For Arch Linux users, [`mkcert`](https://archlinux.org/packages/extra/x86_64/mkcert/) is available on the official Arch Linux repository.
-
-```
-sudo pacman -Syu mkcert
-```
-
-### Windows
-
-On Windows, use [Chocolatey](https://chocolatey.org)
-
-```
-choco install mkcert
-```
-
-or use Scoop
-
-```
-scoop bucket add extras
-scoop install mkcert
-```
-
-or build from source (requires Go 1.10+), or use [the pre-built binaries](https://github.com/FiloSottile/mkcert/releases).
-
-If you're running into permission problems try running `mkcert` as an Administrator.
 
 ## Supported root stores
 
