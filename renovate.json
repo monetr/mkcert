@@ -1,0 +1,47 @@
+{
+  "extends": [
+    "config:recommended",
+    ":semanticCommitTypeAll(deps)",
+    "helpers:pinGitHubActionDigestsToSemver"
+  ],
+  "semanticCommits": "enabled",
+  "semanticCommitType": "deps",
+  "semanticCommitScope": "Renovate",
+  "branchConcurrentLimit": 20,
+  "prConcurrentLimit": 20,
+  "schedule": ["before 6am on monday"],
+  "timezone": "America/Chicago",
+  "minimumReleaseAge": "7 days",
+  "vulnerabilityAlerts": {
+    "minimumReleaseAge": "0 days",
+    "schedule": ["at any time"]
+  },
+  "postUpdateOptions": [
+    "gomodUpdateImportPaths",
+    "gomodTidy"
+  ],
+  "packageRules": [
+    {
+      "matchManagers": [
+        "github-actions"
+      ],
+      "semanticCommitType": "build",
+      "semanticCommitScope": "deps"
+    },
+    {
+      "groupName": "golang",
+      "groupSlug": "golang",
+      "matchPackageNames": [
+        "go",
+        "golang"
+      ]
+    },
+    {
+      "groupName": "golang.org/x",
+      "groupSlug": "golang-x",
+      "matchPackageNames": [
+        "golang.org/x/{/,}**"
+      ]
+    }
+  ]
+}

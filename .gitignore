@@ -1,0 +1,9 @@
+# Local `make build` output and any locally cross-built release binaries. The
+# CI release job builds these in a clean runner, we never want them committed.
+/mkcert
+/mkcert-v*
+/dist/
+*.test
+*.out
+.DS_Store
+.claude/
