@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.6](https://github.com/monetr/mkcert/compare/v1.4.5...v1.4.6) (2026-06-30)
+
+
+### Miscellaneous
+
+* Adding tests ([25c171f](https://github.com/monetr/mkcert/commit/25c171f9ac0c5d40eaa5a4b0c50f1fdfdeb232f5))
+
 ## [1.4.5](https://github.com/monetr/mkcert/compare/v1.4.4...v1.4.5) (2026-06-29)
 
 
