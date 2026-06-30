@@ -1,6 +1,7 @@
 # Local `make build` output and any locally cross-built release binaries. The
 # CI release job builds these in a clean runner, we never want them committed.
 /mkcert
+/mkcert.exe
 /mkcert-v*
 /dist/
 *.test
