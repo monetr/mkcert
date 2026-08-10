@@ -1,5 +1,28 @@
 # Changelog
 
+## [1.4.6](https://github.com/monetr/mkcert/compare/v1.4.5...v1.4.6) (2026-08-10)
+
+
+### Dependencies
+
+* **renovate:** update module golang.org/x/net to v0.57.0 ([#15](https://github.com/monetr/mkcert/issues/15)) ([b1c8339](https://github.com/monetr/mkcert/commit/b1c8339e6c0f2f5b4b64467688814644d952521c))
+* **renovate:** update module software.sslmate.com/src/go-pkcs12 to v0.7.3 ([#12](https://github.com/monetr/mkcert/issues/12)) ([4b63ef8](https://github.com/monetr/mkcert/commit/4b63ef885140c2da70b79b2aef8e862c336c7da0))
+
+
+### Miscellaneous
+
+* Adding tests ([25c171f](https://github.com/monetr/mkcert/commit/25c171f9ac0c5d40eaa5a4b0c50f1fdfdeb232f5))
+
+
+### Build Automation
+
+* **deps:** update actions/attest-build-provenance action to v4.1.1 ([#11](https://github.com/monetr/mkcert/issues/11)) ([cfb591a](https://github.com/monetr/mkcert/commit/cfb591a0d3728727669d254fdb29a73834945076))
+* **deps:** update actions/checkout action to v7.0.1 ([#18](https://github.com/monetr/mkcert/issues/18)) ([96d7847](https://github.com/monetr/mkcert/commit/96d78475673b1e20dde0e2248fbf454ffdeb4042))
+* **deps:** update actions/setup-go action to v6.5.0 ([#14](https://github.com/monetr/mkcert/issues/14)) ([337e266](https://github.com/monetr/mkcert/commit/337e2661d9738ff18dfbbb756684766191c10093))
+* **deps:** update actions/setup-go action to v7 ([#17](https://github.com/monetr/mkcert/issues/17)) ([5d4c1de](https://github.com/monetr/mkcert/commit/5d4c1de9d4bcf69d2f78f7da3cae5c8726fe9b2c))
+* **deps:** update github/codeql-action action to v4.37.0 ([#13](https://github.com/monetr/mkcert/issues/13)) ([eba4c41](https://github.com/monetr/mkcert/commit/eba4c415a71159689d5840bc9cc3e6109a58bb72))
+* **deps:** update github/codeql-action action to v4.37.5 ([#16](https://github.com/monetr/mkcert/issues/16)) ([0b6f55a](https://github.com/monetr/mkcert/commit/0b6f55a5d448d27a0c009de060d4d0c2209b944e))
+
 ## [1.4.5](https://github.com/monetr/mkcert/compare/v1.4.4...v1.4.5) (2026-06-29)
 
 
