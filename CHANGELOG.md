@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.4.7](https://github.com/monetr/mkcert/compare/v1.4.6...v1.4.7) (2026-10-20)
+
+
+### Dependencies
+
+* **renovate:** update module golang.org/x/net to v0.61.0 ([#27](https://github.com/monetr/mkcert/issues/27)) ([7c0456c](https://github.com/monetr/mkcert/commit/7c0456c5852fa97ee8e36ef01e6cf9da61988ab6))
+* **renovate:** update module software.sslmate.com/src/go-pkcs12 to v0.7.4 ([#26](https://github.com/monetr/mkcert/issues/26)) ([e09186e](https://github.com/monetr/mkcert/commit/e09186e7a268706decda968f46f2129ec35f7b87))
+
 ## [1.4.6](https://github.com/monetr/mkcert/compare/v1.4.5...v1.4.6) (2026-09-18)
 
 
